@@ -1,60 +1,34 @@
 #include "sort.h"
 
+void insertion_sort(int *, long int, long int, size_t);
+
 /**
- * counting_sort - sorts an array of integers in ascending order using Counting sort
- * @array: array to sort
- * @size: array size
- */
-void counting_sort(int *array, size_t size)
+* shell_sort - shell sort
+*
+* @array: array to sort
+* @size: size of array
+*/
+void shell_sort(int *array, size_t size)
 {
-    int *counter = NULL;
-    int max_value = 0;
-    size_t i, j;
+	long int n = 1;
+	long int i, k, tmp;
 
-    if (array == NULL || size < 2)
-        return;
+	if (size < 2)
+		return;
 
-    // Find the maximum value in the array
-    for (i = 0; i < size; i++)
-    {
-        if (array[i] > max_value)
-            max_value = array[i];
-    }
+	while (n < (long int)size / 3)
+		n = n * 3 + 1;
 
-    // Allocate memory for the counter array and initialize it to 0
-    counter = malloc((max_value + 1) * sizeof(int));
-    if (counter == NULL)
-    {
-        printf("Memory allocation failed.\n");
-        return;
-    }
-
-    for (i = 0; i <= max_value; i++)
-        counter[i] = 0;
-
-    // Count the occurrences of each element in the input array
-    for (i = 0; i < size; i++)
-        counter[array[i]]++;
-
-    // Perform the sorting by modifying the original array
-    j = 0;
-    for (i = 0; i <= max_value; i++)
-    {
-        while (counter[i] > 0)
-        {
-            array[j] = i;
-            j++;
-            counter[i]--;
-        }
-    }
-
-    // Print the counting array
-    printf("Counting array: ");
-    for (i = 0; i <= max_value; i++)
-        printf("%d ", counter[i]);
-    printf("\n");
-
-    // Free the allocated memory
-    free(counter);
+	while (n > 0)
+	{
+		for (i = n; i < (long int) size; i++)
+		{
+			tmp = array[i];
+			for (k = i; k >= n && array[k - n] > tmp; k = k - n)
+				array[k] = array[k - n];
+			array[k] = tmp;
+		}
+		print_array(array, size);
+		n = (n - 1) / 3;
+	}
 }
-
