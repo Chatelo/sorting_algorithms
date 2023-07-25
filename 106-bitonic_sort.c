@@ -86,7 +86,7 @@ void _sort(int *array, int low, int size, int dir, const int r_size)
 			printf("Merging [%d/%d] (UP):\n", size, r_size);
 		if (dir == 0)
 			printf("Merging [%d/%d] (DOWN):\n", size, r_size);
-		printcheci(array, low, low + i - 1);
+		printcheck(array, low, low + i - 1);
 
 		i = size / 2;
 		_sort(array, low, i, 1, r_size);
@@ -97,12 +97,12 @@ void _sort(int *array, int low, int size, int dir, const int r_size)
 		if (dir == 1)
 		{
 			printf("Result [%d/%d] (UP):\n", size, r_size);
-			printcheci(array, low, low + 2 * i - 1);
+			printcheck(array, low, low + 2 * i - 1);
 		}
 		if (dir == 0)
 		{
 			printf("Result [%d/%d] (DOWN):\n", size, r_size);
-			printcheci(array, low, low + 2 * i - 1);
+			printcheck(array, low, low + 2 * i - 1);
 		}
 	}
 }

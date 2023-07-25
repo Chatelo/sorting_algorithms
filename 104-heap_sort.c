@@ -68,7 +68,7 @@ void heap_sort(int *array, size_t size)
 		return;
 
 	for (a = (size - 2) / 2; a >= 0; --a)
-		maxHeapify(array, size, i, size);
+		maxHeapify(array, size, a, size);
 
 	/**
 	* Repeat following steps while heap size is greater than 1.

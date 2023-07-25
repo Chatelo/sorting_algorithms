@@ -35,7 +35,7 @@ size_t a;
 if (array == NULL || size < 2)
 return;
 /* find maximun number */
-for (a = 0; a < saze; a++)
+for (a = 0; a < size; a++)
 if (array[a] > maximun)
 maximun = array[a];
 counter = _calloc(maximun + 1, sizeof(int));

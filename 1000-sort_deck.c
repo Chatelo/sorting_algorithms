@@ -70,7 +70,7 @@ const char *cnum;
 
 cnum = cardNode->card->value;
 for (a = 0; a < 13; a++)
-if (!_strcmp(cardnum[i], cnum))
+if (!_strcmp(cardnum[a], cnum))
 {
 a++;
 break;
